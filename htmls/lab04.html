@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab04</title>
+    <link rel="stylesheet" href="../misc/css/bootstrap.min.css">
+    <script src="../misc/js/p5.js"></script>
+</head>
+<body>
+<div class="row no-gutters">
+    <div class="col-6 p-3">
+        <div id="canvas" class="w-100"></div>
+    </div>
+    <div class="col p-3">
+        <div class="row no-gutters mt-3">
+            <strong>Single circle:</strong>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label for="xyc" class="input-group-text">Circle center</label>
+                </div>
+                <input type="text" class="form-control" placeholder="(xc yc)" id="xyc" value="0 0">
+                <div class="input-group-prepend">
+                    <label for="rd" class="input-group-text">Circle radius</label>
+                </div>
+                <input type="text" class="form-control" placeholder="rd" id="rd" value="200">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="drawCircle(document.getElementById('xyc').value, document.getElementById('rd').value)">Draw circle</button>
+                </div>
+            </div>
+            <strong>Multiple circles:</strong>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label for="rd0" class="input-group-text">Start radius</label>
+                </div>
+                <input type="text" class="form-control" placeholder="r0" id="rd0" value="100">
+                <div class="input-group-prepend">
+                    <label for="drd" class="input-group-text">Radius step</label>
+                </div>
+                <input type="text" class="form-control" placeholder="dr" id="drd" value="50">
+                <div class="input-group-prepend">
+                    <label for="n" class="input-group-text">N of circles</label>
+                </div>
+                <input type="text" class="form-control" placeholder="n" id="n" value="5">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="drawTestCircles(document.getElementById('rd0').value, document.getElementById('drd').value, document.getElementById('n').value)">Draw circles</button>
+                </div>
+            </div>
+            <strong>Single ellipse:</strong>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label for="xyce" class="input-group-text">Ellipse center</label>
+                </div>
+                <input type="text" class="form-control" placeholder="(xc yc)" id="xyce" value="0 0">
+                <div class="input-group-prepend">
+                    <label for="wh" class="input-group-text">Ellipse rw&rh</label>
+                </div>
+                <input type="text" class="form-control" placeholder="(rw rh)" id="wh" value="200 100">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="drawEllipse(document.getElementById('xyce').value, document.getElementById('wh').value)">Draw ellipse</button>
+                </div>
+            </div>
+            <strong>Multiple ellipses:</strong>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label for="wh0" class="input-group-text">Start rw&rh</label>
+                </div>
+                <input type="text" class="form-control" placeholder="(w0 h0)" id="wh0" value="200 100">
+                <div class="input-group-prepend">
+                    <label for="dwh" class="input-group-text">rw step</label>
+                </div>
+                <input type="text" class="form-control" placeholder="dw" id="dwh" value="50">
+                <div class="input-group-prepend">
+                    <label for="ne" class="input-group-text">N of ellipses</label>
+                </div>
+                <input type="text" class="form-control" placeholder="n" id="ne" value="5">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="drawTestEllipses(document.getElementById('wh0').value, document.getElementById('dwh').value, document.getElementById('ne').value)">Draw ellipses</button>
+                </div>
+            </div>
+            <div class="col-6 mt-3">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="1" name="mtd" checked>
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Library method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="2" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Canonic method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="3" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Parametric method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="4" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Brezenghem method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="5" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Middle point method</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-3">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Choose color</span>
+                    </div>
+                    <input type="color" class="form-control" value="#00FF80" id="color">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark" type="button" onclick="document.getElementById('color').value='#000000';">Canvas color</button>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark" type="button" onclick="document.getElementById('color').value='#00FF80';">Default color</button>
+                    </div>
+                </div>
+                <button class="btn btn-warning w-100" onclick="draw()">Clear canvas</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../misc/js/jquery-3.3.1.min.js"></script>
+<script src="../misc/js/popper.min.js"></script>
+<script src="../misc/js/bootstrap.min.js"></script>
+<script src="../labs/lab04.js"></script>
+</html>

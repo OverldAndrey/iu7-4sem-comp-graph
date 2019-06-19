@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab07</title>
+    <link rel="stylesheet" href="../misc/css/bootstrap.min.css">
+    <script src="../misc/js/p5.min.js"></script>
+</head>
+<body style="cursor: default">
+<div class="row no-gutters">
+    <div class="col-6 p-3">
+        <div id="canvas" class="w-100" onmousedown="click_listener();"></div>
+    </div>
+    <div class="col-6 p-3">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <div class="input-group w-100" onclick="set_container_mode();">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Color: </span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Cutter</label>
+                    </div>
+                    <input type="color" class="form-control" value="#FF0000" id="c_color">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Visible</label>
+                    </div>
+                    <input type="color" class="form-control" value="#000000" id="l_color">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Invisible</label>
+                    </div>
+                    <input type="color" class="form-control" value="#C8C8C8" id="i_color">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="button" onclick="scene.set_color('l_color', 'c_color', 'i_color');">Set colors</button>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Mode:</span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="1" name="tp" id="tp1" checked>
+                        </div>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Lines</span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="2" name="tp" id="tp2">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Cutter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row no-gutters mt-3">
+            <div class="col-6 pr-2">
+                <button class="btn btn-primary w-100" onclick="cut_listener();">Cut lines</button>
+            </div>
+            <div class="col-6 pl-2">
+                <button class="btn btn-warning w-100" onclick="scene.clear(); draw();">Reset canvas</button>
+            </div>
+        </div>
+        <div class="input-group my-3">
+            <div class="input-group-prepend">
+                <label for="xy" class="input-group-text">Add line</label>
+            </div>
+            <input type="text" class="form-control" placeholder="(x1 y1, x2 y2)" id="xy" value="500 500, 600 600">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button" onclick="add_line_listener();">Add</button>
+            </div>
+        </div>
+        <div class="input-group my-3">
+            <div class="input-group-prepend">
+                <label for="xy" class="input-group-text">Set cutter</label>
+            </div>
+            <input type="text" class="form-control" placeholder="(x1 y1, w h)" id="cxy" value="500 500, 100 100">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button" onclick="set_cutter_listener();">Set</button>
+            </div>
+        </div>
+        <article id="help" class="d-block w-100">
+            To add a line, click to place p1 on canvas and drag to p2 then release to place line<br>
+            Keys:
+            <ul>
+                <li>mouse1 - at cursor position</li>
+                <li>ctrl+mouse1 - horizontal at cursor x</li>
+                <li>alt+mouse1 - vertical at cursor y</li>
+            </ul>
+        </article>
+    </div>
+</div>
+</body>
+<script src="../misc/js/jquery-3.3.1.min.js"></script>
+<script src="../misc/js/popper.min.js"></script>
+<script src="../misc/js/bootstrap.min.js"></script>
+<script src="../labs/lab07.js"></script>
+</html>

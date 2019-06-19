@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab01</title>
+    <link rel="stylesheet" href="../misc/css/bootstrap.min.css">
+    <script src="../misc/js/p5.js"></script>
+</head>
+<body>
+    <div class="row no-gutters">
+        <div class="col-6 p-3">
+            <div id="canvas" class="w-100"></div>
+        </div>
+        <div class="col p-3">
+            <p>
+                На плоскости дано множество точек и треугольник (задан вершинами). Найти все окружности, каждая из которых проходит
+                хотя бы через три различные точки заданного множества, у которых прямая, проходящая через две вершины треугольника,
+                проходит и через центр окружности.
+            </p>
+            <p>
+                Среди найденных окружностей выбрать ту, для которой искомая прямая образует минимальный угол с осью ординат.
+                Сделать в графическом режиме вывод изображения.
+            </p>
+            <div class="row no-gutters mt-3">
+                <div class="col-6 pr-2">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Points</span>
+                        </div>
+                        <input type="text" placeholder="Coords (x y)" class="form-control" id="ab1">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark" type="button" onclick="set1.addPoint(updateSize(document.getElementById('ab1').value));">Add point</button>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" placeholder="N of point" class="form-control" id="db">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-danger" type="button" onclick="set1.deletePoint(document.getElementById('db').value);">Delete</button>
+                        </div>
+                    </div>
+                    <div class="input-group mb-5">
+                        <input type="text" placeholder="N of point" class="form-control" id="mbn">
+                        <input type="text" placeholder="Coords (x y)" class="form-control" id="mbc">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="button" onclick="set1.modifyPoint(updateSize(document.getElementById('mbc').value), document.getElementById('mbn').value);">Modify point</button>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Triangle</span>
+                        </div>
+                        <input type="text" placeholder="A (x y)" class="form-control" id="tr1">
+                        <input type="text" placeholder="B (x y)" class="form-control" id="tr2">
+                        <input type="text" placeholder="C (x y)" class="form-control" id="tr3">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-warning" type="button" onclick="triangle.setTriangle(updateSize(document.getElementById('tr1').value), updateSize(document.getElementById('tr2').value), updateSize(document.getElementById('tr3').value));">Set</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 pl-2">
+                    <table class="table table-bordered" id="tab1">
+                        <thead>
+                        <tr>
+                            <th scope="col">N</th>
+                            <th scope="col">x</th>
+                            <th scope="col">y</th>
+                        </tr>
+                        </thead>
+                        <tbody id="set1"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../misc/js/jquery-3.3.1.min.js"></script>
+<script src="../misc/js/popper.min.js"></script>
+<script src="../misc/js/bootstrap.min.js"></script>
+<script src="../labs/lab01.js"></script>
+</html>

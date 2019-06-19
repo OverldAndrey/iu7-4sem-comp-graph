@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab01</title>
+  <link rel="stylesheet" href="../misc/css/bootstrap.min.css">
+  <script src="../misc/js/p5.js"></script>
+</head>
+<body>
+<div class="row no-gutters">
+  <div class="col-6 p-3">
+    <div id="canvas" class="w-100"></div>
+  </div>
+  <div class="col-6 p-3">
+    <div class="row no-gutters">
+      <div class="col-12">
+        <div class="input-group w-100">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Color: </span>
+          </div>
+          <div class="input-group-prepend">
+            <label class="input-group-text">Surface</label>
+          </div>
+          <input type="color" class="form-control" value="#FF0000" id="s_color">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="button" onclick="color_listener();">Set colors</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row no-gutters mt-4">
+      <div class="col-6 pr-2">
+        <div class="input-group w-100">
+          <div class="input-group-prepend">
+            <label class="input-group-text">X range</label>
+          </div>
+          <input type="text" class="form-control" value="-6 6" id="xr">
+          <div class="input-group-prepend">
+            <label class="input-group-text">X step</label>
+          </div>
+          <input type="text" class="form-control" value="0.1" id="xs">
+        </div>
+      </div>
+      <div class="col-6 pl-2">
+        <div class="input-group w-100">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Z range</label>
+          </div>
+          <input type="text" class="form-control" value="-6 6" id="zr">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Z step</label>
+          </div>
+          <input type="text" class="form-control" value="0.1" id="zs">
+        </div>
+      </div>
+    </div>
+    <div class="row no-gutters mt-4">
+      <div class="col-4 pr-2">
+        <div class="input-group w-100">
+          <div class="input-group-prepend">
+            <label class="input-group-text">rotate X, deg</label>
+          </div>
+          <input type="text" class="form-control" value="0" id="ax">
+          <div class="input-group-append">
+            <span class="input-group-text" id="axc">10</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 px-2">
+        <div class="input-group w-100">
+          <div class="input-group-prepend">
+            <label class="input-group-text">rotate Y, deg</label>
+          </div>
+          <input type="text" class="form-control" value="0" id="ay">
+          <div class="input-group-append">
+            <span class="input-group-text" id="ayc">-10</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 pl-2">
+        <div class="input-group w-100">
+          <div class="input-group-prepend">
+            <label class="input-group-text">rotate Z, deg</label>
+          </div>
+          <input type="text" class="form-control" value="0" id="az">
+          <div class="input-group-append">
+            <span class="input-group-text" id="azc">0</span><span class="input-group-text">⩽30</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row no-gutters mt-4">
+      <div class="col-12">
+        <div class="btn-group w-100">
+          <button class="btn btn-primary w-100" onclick="rotate_listener(); draw_listener();">Draw</button>
+          <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <div class="dropdown-menu" onclick="set_container_mode();">
+            <div class="dropdown-item" onclick="set_radio1();">
+              <input class="dropdown-item" type="radio" name="surface" id="s1" value="s1" checked>
+              <label for="s1">exp(sin(sqrt(x**2 + z**2)))</label>
+            </div>
+            <div class="dropdown-item" onclick="set_radio2();">
+              <input class="dropdown-item" type="radio" name="surface" id="s2" value="s2">
+              <label for="s2">x**2 + z**2</label>
+            </div>
+            <div class="dropdown-item" onclick="set_radio3();">
+              <input class="dropdown-item" type="radio" name="surface" id="s3" value="s3">
+              <label for="s3">cos(x) * sin(z)</label>
+            </div>
+            <div class="dropdown-item" onclick="set_radio4();">
+              <input class="dropdown-item" type="radio" name="surface" id="s4" value="s4">
+              <label for="s4">1/(1+x**2) + 1/(1+z**2)</label>
+            </div>
+            <div class="dropdown-item" onclick="set_radio5();">
+              <input class="dropdown-item" type="radio" name="surface" id="s5" value="s5">
+              <label for="s5">sin(x**2 + z**2)/5</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p id="c_surf" class="h4 mt-4"></p>
+  </div>
+</div>
+</body>
+<script src="../misc/js/jquery-3.3.1.min.js"></script>
+<script src="../misc/js/popper.min.js"></script>
+<script src="../misc/js/bootstrap.min.js"></script>
+<script src="../labs/lab10.js"></script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab02</title>
+    <link rel="stylesheet" href="../misc/css/bootstrap.min.css">
+    <script src="../misc/js/p5.js"></script>
+</head>
+<body>
+<div class="row no-gutters">
+    <div class="col-6 p-3">
+        <div id="canvas" class="w-100"></div>
+    </div>
+    <div class="col p-3">
+        <div class="row no-gutters mt-3">
+            <div class="col-6 pr-2">
+                <label for="dxy">Move: dx dy</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="(dx dy)" id="dxy">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="button" onclick="fig.move('dxy');">Move</button>
+                    </div>
+                </div>
+                <label for="kxy">Scale: kx ky;</label>
+                <label for="sc">Sx Sy</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="(kx ky)" id="kxy">
+                    <input type="text" class="form-control" placeholder="(mx my)" id="sc">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="button" onclick="fig.scale('kxy', 'sc');">Scale</button>
+                    </div>
+                </div>
+                <label for="a">Rotate: Angle(deg);</label>
+                <label for="rc">Rx Ry</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="a" id="a">
+                    <input type="text" class="form-control" placeholder="(rx ry)" id="rc">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="button" onclick="fig.rotate('a', 'rc');">Rotate</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col pl-2">
+                <button class="btn btn-danger w-100 mb-3" type="button" onclick="fig.queue = []; document.getElementById('queue').innerHTML = null;">Reset</button>
+                <button class="btn btn-danger w-100 mb-3" type="button" onclick="fig.queue.pop(); document.getElementById('queue').removeChild(document.getElementById('queue').lastChild);">Undo</button>
+                <div id="queue" style="font-size: 150%;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../misc/js/jquery-3.3.1.min.js"></script>
+<script src="../misc/js/popper.min.js"></script>
+<script src="../misc/js/bootstrap.min.js"></script>
+<script src="../labs/lab02.js"></script>
+</html>
