@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab05</title>
+    <link rel="stylesheet" href="../misc/css/bootstrap.min.css">
+    <script src="../misc/js/p5.js"></script>
+</head>
+<body>
+<div class="row no-gutters">
+    <div class="col-6 p-3">
+        <div id="canvas" class="w-100" onclick="figure.add_point(); refresh();" oncontextmenu="figure.complete_edge_set(); refresh();"></div>
+    </div>
+    <div class="col p-3">
+        <div class="row no-gutters mt-3">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Choose color</span>
+                </div>
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Paint</label>
+                </div>
+                <input type="color" class="form-control" value="#FF0000" id="p_color">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Border</label>
+                </div>
+                <input type="color" class="form-control" value="#000000" id="b_color">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Divider</label>
+                </div>
+                <input type="color" class="form-control" value="#00FF00" id="d_color">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Canvas</label>
+                </div>
+                <input type="color" class="form-control" value="#FFFFFF" id="c_color">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="figure.set_color('p_color', 'b_color', 'd_color', 'c_color');">Set colors</button>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="figure.set_mode('slow-mode'); figure.draw();">Paint figure</button>
+                </div>
+            </div>
+            <div class="col-5 pr-2">
+                <button class="btn btn-warning w-100" onclick="figure.reset(); refresh();">Reset figure</button>
+            </div>
+            <div class="col-5 px-2">
+                <button class="btn btn-warning w-100" onclick="refresh();">Reset painting</button>
+            </div>
+            <div class="col pl-2">
+                <div class="input-group mb-2 w-100">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" value="1" name="mtd" id="slow-mode">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Slow mode</span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                    <label for="xy" class="input-group-text">Add point</label>
+                </div>
+                <input type="text" class="form-control" placeholder="(x y)" id="xy" value="500 500">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="figure.add_point('xy'); refresh();">Add</button>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="figure.complete_edge_set(); refresh();">Finish figure</button>
+                </div>
+            </div>
+            <article id="help" class="d-block w-100">
+                To add a point, click on canvas or use field above.<br>
+                Keys:
+                <ul>
+                    <li>mouse1 - at cursor position</li>
+                    <li>alt+mouse1 - horizontal at cursor x</li>
+                    <li>ctrl+mouse1 - vertical at cursor y</li>
+                    <li>mouse2 - finish figure</li>
+                </ul>
+            </article>
+            <p id="figure-state" class="d-block w-100"></p>
+            <p id="message-head" class="d-block mr-2">State: </p>
+            <p id="message" class="d-block">Initialising</p>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../misc/js/jquery-3.3.1.min.js"></script>
+<script src="../misc/js/popper.min.js"></script>
+<script src="../misc/js/bootstrap.min.js"></script>
+<script src="../labs/lab05.js"></script>
+</html>

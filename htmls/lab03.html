@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab03</title>
+    <link rel="stylesheet" href="../misc/css/bootstrap.min.css">
+    <script src="../misc/js/p5.js"></script>
+</head>
+<body>
+<div class="row no-gutters">
+    <div class="col-6 p-3">
+        <div id="canvas" class="w-100"></div>
+    </div>
+    <div class="col p-3">
+        <div class="row no-gutters mt-3">
+            <strong>Single line:</strong>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label for="xy1" class="input-group-text">Start point</label>
+                </div>
+                <input type="text" class="form-control" placeholder="(x1 y1)" id="xy1" value="0 0">
+                <div class="input-group-prepend">
+                    <label for="xy2" class="input-group-text">End point</label>
+                </div>
+                <input type="text" class="form-control" placeholder="(x2 y2)" id="xy2" value="200 100">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="drawLine(document.getElementById('xy1').value, document.getElementById('xy2').value)">Draw</button>
+                </div>
+            </div>
+            <strong>Multiple lines:</strong>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label for="len" class="input-group-text">Length</label>
+                </div>
+                <input type="text" class="form-control" placeholder="len" id="len" value="200">
+                <div class="input-group-prepend">
+                    <label for="dfi" class="input-group-text">Angle step (deg)</label>
+                </div>
+                <input type="text" class="form-control" placeholder="dfi" id="dfi" value="10">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" onclick="drawTestLines(document.getElementById('len').value, document.getElementById('dfi').value)">Draw</button>
+                </div>
+            </div>
+            <div class="col-6 mt-3">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="1" name="mtd" checked>
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Library method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="2" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">DDA method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="3" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Brezenghem float method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="4" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Brezenghem int method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="5" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Brezenghem soft method</span>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" value="6" name="mtd">
+                        </div>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Wu soft method</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-3">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Choose color</span>
+                    </div>
+                    <input type="color" class="form-control" value="#FFFFFF" id="color">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark" type="button" onclick="document.getElementById('color').value='#000000';">Canvas color</button>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark" type="button" onclick="document.getElementById('color').value='#FFFFFF';">Default color</button>
+                    </div>
+                </div>
+                <button class="btn btn-warning w-100" onclick="draw()">Clear canvas</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../misc/js/jquery-3.3.1.min.js"></script>
+<script src="../misc/js/popper.min.js"></script>
+<script src="../misc/js/bootstrap.min.js"></script>
+<script src="../labs/lab03.js"></script>
+</html>
